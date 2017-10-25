@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">D Spot Alpha</string>
+
+    <!--Preferences-->
+    <string name="preference_1">Preference 1</string>
+    <string name="preference_2">Preference 2</string>
+    <string name="preference_3">Preference 3</string>
+    <string name="preference_4">Preference 4</string>
+    <string name="preference_5">Preference 5</string>
+    <string name="preference_6">Preference 6</string>
+
+    <!--Shared Preferences Keys/IDs-->
+    <string name="number_of_preferences">Number of Preferences</string>
+    <string name="prefs1">preference1</string>
+    <string name="prefs2">preference2</string>
+    <string name="prefs3">preference3</string>
+    <string name="prefs4">preference4</string>
+    <string name="prefs5">preference5</string>
+    <string name="prefs6">preference6</string>
+    <string name="prefs7">preference7</string>
+    <string name="prefs8">preference8</string>
+    <string name="prefs9">preference9</string>
+</resources>
