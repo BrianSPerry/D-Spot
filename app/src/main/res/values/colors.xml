@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#2e2e2e</color>
     <color name="colorAccent">#e240ff</color>
     <color name="backgroundMain">#595959</color>
+    <color name="sideBarBackground">#666666</color>
 
 
     <color name="testColour1">#ffffff</color>
@@ -15,4 +16,7 @@
     <color name="testColour7">#0062ff</color>
     <color name="testColour8">#ffd000</color>
     <color name="testColour9">#f700ff</color>
+    <color name="testColour10">#b4000000</color>
+
+    <color name="hintColour">#969696</color>
 </resources>

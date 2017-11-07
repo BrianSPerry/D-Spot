@@ -11,6 +11,8 @@
 
     <!--Shared Preferences Keys/IDs-->
     <string name="number_of_preferences">Number of Preferences</string>
+    <string name="has_selected_preferences">D Spot Alpha</string>
+    <string name="selected_prefs_amt">1</string>
     <string name="prefs1">preference1</string>
     <string name="prefs2">preference2</string>
     <string name="prefs3">preference3</string>
@@ -20,4 +22,16 @@
     <string name="prefs7">preference7</string>
     <string name="prefs8">preference8</string>
     <string name="prefs9">preference9</string>
+
+    <string name="title_activity_home01">HomeActivity01</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_account">Account</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

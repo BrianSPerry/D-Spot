@@ -1,5 +1,6 @@
 package com.example.myser.dspotalpha;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -10,7 +11,7 @@ public class PreferencesArrayData {
     public String[] preferenceKeys;
     public String[] preferenceValues;
 
-    public PreferencesArrayData (AppCompatActivity appCompatActivity) {
+    public PreferencesArrayData (Activity appCompatActivity) {
         preferenceKeys = new String[6];
         preferenceValues = new String[6];
 
