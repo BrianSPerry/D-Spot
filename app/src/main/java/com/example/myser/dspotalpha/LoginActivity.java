@@ -36,22 +36,18 @@ public class LoginActivity extends AppCompatActivity {
 
         loginLayout = (LinearLayout)findViewById(R.id.loginLayout);
         signUpLayout = (LinearLayout)findViewById(R.id.signupLayout);
-
         emailTextViewLogin = (EditText)findViewById(R.id.emailEditTextLogin);
         passwordTextViewLogin = (EditText)findViewById(R.id.passwordEditTextLogin);
-
         emailTextViewSignUp = (EditText)findViewById(R.id.emailEditTextSignUp);
         passwordTextViewSignUp = (EditText)findViewById(R.id.passwordEditTextSignUp);
-
         rememberMeRegister = (CheckBox)findViewById(R.id.rememberMeRegister);
-
         loadingText = (TextView)findViewById(R.id.loadingText);
-
         progressViewGridLayout = (ConstraintLayout)findViewById(R.id.progressViewCustom);
         firebaseAuthentication = FirebaseAuth.getInstance();
 
         if (firebaseAuthentication.getCurrentUser() != null) {
             startActivity(new Intent(this, HomeActivity01.class));
+            //Also, start the HomeFragment as well.
         }
     }
 
