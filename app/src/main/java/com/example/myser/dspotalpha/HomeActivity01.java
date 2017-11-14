@@ -22,12 +22,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import org.w3c.dom.Text;
 
 import java.lang.ref.PhantomReference;
 
@@ -37,7 +42,7 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     private AccountFragment profileFragment = new AccountFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
 
-    private FirebaseAuth firebaseAuthentication;
+    public static FirebaseAuth firebaseAuthentication;
 
     private Intent thisIntent;
     private String fragmentToLoad;
@@ -227,6 +232,10 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     public void logOut (View view) {
         firebaseAuthentication.signOut();
         startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    public void saveInformation (View view) {
+        profileFragment.saveInformation(view);
     }
 
 }

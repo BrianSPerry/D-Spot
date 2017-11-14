@@ -31,6 +31,14 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_account">Account</string>
 
+    <!--GENDERS-->
+    <string-array name="genders">
+        <item name="gender_male">Male</item>
+        <item name="gender_female">Female</item>
+        <item name="gender_transgender_male">Transgender Male</item>
+        <item name="gender_transgender_female">Transgender Female</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>

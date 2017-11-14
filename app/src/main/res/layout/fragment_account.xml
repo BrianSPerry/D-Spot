@@ -6,17 +6,204 @@
     android:background="@color/backgroundMain"
     tools:context="com.example.myser.dspotalpha.AccountFragment">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:onClick="logOut"
-        android:text="Log Out"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:srcCompat="@color/colorAccent" />
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    app:srcCompat="@drawable/profile_image_gradient" />
+
+                <!--<Button
+                    android:id="@+id/button3"
+                    android:layout_width="45dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@color/testColour10"
+                    android:foreground="@drawable/ic_menu_camera" />-->
+
+                <!--<Button
+                    android:id="@+id/button4"
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@color/testColour10"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:foregroundGravity="left|center_vertical"
+                    android:padding="10dp"
+                    android:text="     Upload"
+                    android:textColor="@color/testColour1" />-->
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:foregroundGravity="center"
+                    android:foregroundTint="@color/backgroundMain"
+                    android:padding="10dp"
+                    android:textColor="@color/testColour1" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="Welcome, title!"
+                android:textColor="@color/testColour1"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="NAME:"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingBottom="30dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="Name"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/passwordTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="PASSWORD:"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingBottom="30dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/genderTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="GENDER:"
+                android:textColor="@color/testColour1" />
+
+            <EditText
+                android:id="@+id/genderEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Gender"
+                android:inputType="textPersonName"
+                android:paddingBottom="30dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/biographyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="BIOGRAPHY:"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <EditText
+                android:id="@+id/biographyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Biography"
+                android:inputType="textMultiLine"
+                android:paddingBottom="30dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <Button
+                android:id="@+id/saveInformationButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:onClick="saveInformation"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="SAVE" />
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:onClick="logOut"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="Log Out"
+                app:layout_constraintBottom_toTopOf="@+id/navigation"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>
