@@ -20,7 +20,7 @@
                 android:layout_height="200dp">
 
                 <ImageView
-                    android:id="@+id/imageView7"
+                    android:id="@+id/profilePhotoImageView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     app:srcCompat="@color/colorAccent" />
@@ -70,6 +70,7 @@
                     android:foreground="@drawable/ic_menu_camera"
                     android:foregroundGravity="center"
                     android:foregroundTint="@color/backgroundMain"
+                    android:onClick="getPhotoFile"
                     android:padding="10dp"
                     android:textColor="@color/testColour1" />
             </RelativeLayout>

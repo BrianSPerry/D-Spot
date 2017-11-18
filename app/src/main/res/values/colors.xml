@@ -17,7 +17,7 @@
     <color name="testColour8">#ffd000</color>
     <color name="testColour9">#f700ff</color>
     <color name="testColour10">#b4000000</color>
-    <color name="testColour11">#b4949494</color>
+    <color name="testColour11">#b4cacaca</color>
 
     <color name="hintColour">#969696</color>
 </resources>

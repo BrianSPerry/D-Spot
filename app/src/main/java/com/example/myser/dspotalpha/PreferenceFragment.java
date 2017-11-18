@@ -126,8 +126,10 @@ public class PreferenceFragment extends Fragment {
             Toast.makeText(getActivity(), "Select at least one category before proceeding...", Toast.LENGTH_LONG).show();
         }
         else {
-            editor.putBoolean(getResources().getString(R.string.has_selected_preferences), true);
-            editor.apply();
+            //region Saving whether or not preferences have been saved
+            /*editor.putBoolean(getResources().getString(R.string.has_selected_preferences), true);
+            editor.apply();*/
+            //endregion
             startActivity(new Intent(getActivity(), HomeActivity01.class));
         }
     }

@@ -40,6 +40,7 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
 
     private HomeFragment homeFragment = new HomeFragment();
     private AccountFragment profileFragment = new AccountFragment();
+    private FeedsFragment feedsFragmentFragment = new FeedsFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
 
     public static FirebaseAuth firebaseAuthentication;
@@ -173,9 +174,7 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
             else {
                 preferenceImages[i].setVisibility(View.GONE);
             }
-
         }
-
     }
 
     @Override
@@ -232,6 +231,14 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     public void logOut (View view) {
         firebaseAuthentication.signOut();
         startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    public void getPhotoFile (View view) {
+        profileFragment.getPhotoFile(view);
+    }
+
+    public void loadFeed(View view) {
+        fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, feedsFragmentFragment).commit();
     }
 
     public void saveInformation (View view) {

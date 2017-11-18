@@ -111,7 +111,12 @@ public class PreferencesActivity extends AppCompatActivity {
         else {
             editor.putBoolean(getResources().getString(R.string.has_selected_preferences), true);
             editor.apply();
-            startActivity(new Intent(this, HomeActivity01.class));
+
+            Intent intent = new Intent(this, HomeActivity01.class);
+            //Intent intent = new Intent(LoginActivity.this, AccountSetupActivity.class);
+            //startActivity(new Intent(this, HomeActivity01.class));
+            intent.putExtra(LoginActivity.FRAGMENT_TO_LOAD, LoginActivity.shouldLoadHomeFragmentValue);
+            startActivity(intent);
         }
     }
 

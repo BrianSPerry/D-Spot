@@ -1,0 +1,270 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundMain"
+    tools:context="com.example.myser.dspotalpha.FeedsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/categoryNameImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="@string/hello_blank_fragment"
+                android:textColor="@color/testColour1"
+                android:textSize="24sp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@color/colorAccent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Awesome Title Text"
+                        android:textColor="@color/testColour1"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="5dp"
+                        android:text="Really nice description of the event and stuff. Box lunch. Also, more words!!"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/testColour1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@color/testColour2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Awesome Title Text"
+                        android:textColor="@color/testColour1"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="5dp"
+                        android:text="Really nice description of the event and stuff. Box lunch. Also, more words!!"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/testColour1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@color/testColour3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Awesome Title Text"
+                        android:textColor="@color/testColour1"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="5dp"
+                        android:text="Really nice description of the event and stuff. Box lunch. Also, more words!!"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/testColour1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@color/testColour4" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Awesome Title Text"
+                        android:textColor="@color/testColour1"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="5dp"
+                        android:text="Really nice description of the event and stuff. Box lunch. Also, more words!!"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/testColour1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@color/testColour6" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Awesome Title Text"
+                        android:textColor="@color/testColour1"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="5dp"
+                        android:text="Really nice description of the event and stuff. Box lunch. Also, more words!!"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/testColour1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@color/testColour7" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Awesome Title Text"
+                        android:textColor="@color/testColour1"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="5dp"
+                        android:text="Really nice description of the event and stuff. Box lunch. Also, more words!!"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/testColour1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

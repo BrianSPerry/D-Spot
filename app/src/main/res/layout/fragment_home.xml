@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
         android:columnCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,12 +25,14 @@
 
         <LinearLayout
             android:id="@+id/prefs1"
-            android:layout_width="125dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            android:onClick="loadFeed"
             android:orientation="vertical"
             android:padding="2dp"
-            android:tag="@string/prefs1">
+            android:tag="@string/prefs1"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/imageView1"
@@ -50,12 +52,14 @@
 
         <LinearLayout
             android:id="@+id/prefs2"
-            android:layout_width="125dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            android:onClick="loadFeed"
             android:orientation="vertical"
             android:padding="2dp"
-            android:tag="@string/prefs2">
+            android:tag="@string/prefs2"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -75,12 +79,14 @@
 
         <LinearLayout
             android:id="@+id/prefs3"
-            android:layout_width="125dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            android:onClick="loadFeed"
             android:orientation="vertical"
             android:padding="2dp"
-            android:tag="@string/prefs3">
+            android:tag="@string/prefs3"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -100,12 +106,14 @@
 
         <LinearLayout
             android:id="@+id/prefs4"
-            android:layout_width="125dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            android:onClick="loadFeed"
             android:orientation="vertical"
             android:padding="2dp"
-            android:tag="@string/prefs4">
+            android:tag="@string/prefs4"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -125,12 +133,14 @@
 
         <LinearLayout
             android:id="@+id/prefs5"
-            android:layout_width="125dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            android:onClick="loadFeed"
             android:orientation="vertical"
             android:padding="2dp"
-            android:tag="@string/prefs5">
+            android:tag="@string/prefs5"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -150,12 +160,14 @@
 
         <LinearLayout
             android:id="@+id/prefs6"
-            android:layout_width="125dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            android:onClick="loadFeed"
             android:orientation="vertical"
             android:padding="2dp"
-            android:tag="@string/prefs6">
+            android:tag="@string/prefs6"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/imageView6"

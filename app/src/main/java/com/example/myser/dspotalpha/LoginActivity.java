@@ -46,7 +46,11 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuthentication = FirebaseAuth.getInstance();
 
         if (firebaseAuthentication.getCurrentUser() != null) {
-            startActivity(new Intent(this, HomeActivity01.class));
+            Intent intent = new Intent(LoginActivity.this, HomeActivity01.class);
+
+            intent.putExtra(FRAGMENT_TO_LOAD, shouldLoadHomeFragmentValue);
+            startActivity(intent);
+            //startActivity(new Intent(this, HomeActivity01.class));
             //Also, start the HomeFragment as well.
         }
     }
@@ -84,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }*/
                     //endregion
-                    startActivity(new Intent(LoginActivity.this, PreferencesActivity.class));
+                    startActivity(new Intent(LoginActivity.this, AccountSetupActivity.class));
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Registration failed. Please try again later.", Toast.LENGTH_SHORT).show();
@@ -121,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Successfully signed in!", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(LoginActivity.this, HomeActivity01.class);
+                    //Intent intent = new Intent(LoginActivity.this, AccountSetupActivity.class);
 
                     intent.putExtra(FRAGMENT_TO_LOAD, shouldLoadHomeFragmentValue);
                     startActivity(intent);

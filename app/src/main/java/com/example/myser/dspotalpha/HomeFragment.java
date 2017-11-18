@@ -2,6 +2,7 @@ package com.example.myser.dspotalpha;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -109,6 +110,10 @@ public class HomeFragment extends Fragment {
 
     public void loadPreference01(View view) {
         Toast.makeText(getActivity(), "Mega Penis!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void loadFeed(View view) {
+
     }
 
     //region GetChildren
