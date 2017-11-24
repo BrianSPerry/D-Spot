@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/prefsBackground"
+        android:tag="@string/prefs1"
+        android:text="@string/preference_1"
+        android:textColor="@color/testColour1"
+        android:textSize="14sp"
+        app:buttonTint="@color/testColour1" />
+
+</LinearLayout>

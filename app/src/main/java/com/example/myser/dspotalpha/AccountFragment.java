@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -37,6 +42,7 @@ public class AccountFragment extends Fragment {
     private static final int CHOOSE_IMAGE_REQUEST = 234;
 
     public Button saveButton, logOutButton;
+    public String userInformationNode = "User Information/";
 
     private TextView titleTextView;
     private EditText nameEditText;
@@ -48,6 +54,7 @@ public class AccountFragment extends Fragment {
     private Bitmap bitmap;
 
     private DatabaseReference databaseReference;
+    private DatabaseReference databaseReferenceLoader;
     private FirebaseUser user;
     private StorageReference storageReference;
 
@@ -73,6 +80,7 @@ public class AccountFragment extends Fragment {
         profilePhotoImageView = (ImageView) view.findViewById(R.id.profilePhotoImageView);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReferenceLoader = FirebaseDatabase.getInstance().getReference();
         user = HomeActivity01.firebaseAuthentication.getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -85,8 +93,61 @@ public class AccountFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+//        databaseReferenceLoader.child("User Information").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                //region works
+//                /*
+//                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+//                    UserInformation value = childSnapshot.getValue(UserInformation.class);
+//                    Toast.makeText(getActivity(), "DATA CHANGED " + value.name, Toast.LENGTH_LONG).show();
+//                }
+//                */
+//                //endregion
+//                //UserInformation name = dataSnapshot.child(userInformationNode + user.getUid()).getValue(UserInformation.class);
+//                //UserInformation value = dataSnapshot.getValue(UserInformation.class);
+//                //Toast.makeText(getActivity(), "DATA CHANGED " + value.name, Toast.LENGTH_LONG).show();
+//
+//                //UserInformation value = dataSnapshot.getValue(UserInformation.class);
+//                UserInformation value = dataSnapshot.child((user.getUid())).getValue(UserInformation.class);
+//                Toast.makeText(getActivity(), "DATA CHANGED: " + value.name, Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Toast.makeText(getActivity(), "NO DATA CHANGED", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+    }
+
     private void initializeUI () {
         titleTextView.setText("Welcome, " + user.getEmail() + "!");
+
+        databaseReferenceLoader.child("User Information").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                UserInformation value = dataSnapshot.child((user.getUid())).getValue(UserInformation.class);
+
+                nameEditText.setText(value.name);
+                genderEditText.setText(value.gender);
+                biographyEditText.setText(value.bio);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(getActivity(), "NO DATA CHANGED", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void saveInformation (View view) {
@@ -95,7 +156,7 @@ public class AccountFragment extends Fragment {
         String bio = biographyEditText.getText().toString();
         userInformation = new UserInformation(name, gender, bio);
 
-        databaseReference.child(user.getUid()).setValue(userInformation);
+        databaseReference.child(userInformationNode + user.getUid()).setValue(userInformation);
     }
 
     public void getPhotoFile (View view) {
@@ -109,7 +170,7 @@ public class AccountFragment extends Fragment {
 
     private void uploadFile () {
         if (filePath != null) {
-            StorageReference riversRef = storageReference.child("images/profile_photo.jpg");
+            StorageReference riversRef = storageReference.child("Profile Photos/" + user.getUid() + "/profile_photo.jpg");
 
             riversRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

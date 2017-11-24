@@ -5,6 +5,7 @@
     <color name="colorAccent">#e240ff</color>
     <color name="backgroundMain">#595959</color>
     <color name="sideBarBackground">#666666</color>
+    <color name="prefsBackground">#696969</color>
 
 
     <color name="testColour1">#ffffff</color>

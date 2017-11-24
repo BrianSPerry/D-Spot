@@ -41,6 +41,7 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     private HomeFragment homeFragment = new HomeFragment();
     private AccountFragment profileFragment = new AccountFragment();
     private FeedsFragment feedsFragmentFragment = new FeedsFragment();
+    private PreferenceFragment preferenceFragment = new PreferenceFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
 
     public static FirebaseAuth firebaseAuthentication;
@@ -155,7 +156,8 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
         }  else if (id == R.id.nav_map) {
             startActivity(new Intent(HomeActivity01.this, MapsActivity.class));
         } else if (id == R.id.nav_prefs) {
-            startActivity(new Intent(HomeActivity01.this, PreferencesActivity.class));
+            //startActivity(new Intent(HomeActivity01.this, PreferencesActivity.class));
+            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, preferenceFragment).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
