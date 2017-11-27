@@ -42,7 +42,7 @@ public class AccountFragment extends Fragment {
     private static final int CHOOSE_IMAGE_REQUEST = 234;
 
     public Button saveButton, logOutButton;
-    public String userInformationNode = "User Information/";
+    public static String userInformationNode = "User Information/";
 
     private TextView titleTextView;
     private EditText nameEditText;
@@ -127,6 +127,8 @@ public class AccountFragment extends Fragment {
 //        });
     }
 
+    //I HAVE TO CHECK TO SEE IF THE USER HAS VALID INFO UP ON THEIR PROFILE BEFORE ATTEMPTING TO SET THE INFO TO THE UI.
+    //FAILURE TO DO SO WILL RESULT IN CRASHES EVERY TIME THE USER ATTEMPTS TO OPEN THIS FRAGMENT.
     private void initializeUI () {
         titleTextView.setText("Welcome, " + user.getEmail() + "!");
 
