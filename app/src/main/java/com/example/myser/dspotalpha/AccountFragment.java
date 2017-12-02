@@ -2,6 +2,7 @@ package com.example.myser.dspotalpha;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;*/
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,10 +32,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -51,6 +58,7 @@ public class AccountFragment extends Fragment {
     private EditText biographyEditText;
     private ImageView profilePhotoImageView;
     private Uri filePath;
+    private File downloadedImage;
     private Bitmap bitmap;
 
     private DatabaseReference databaseReference;
@@ -89,6 +97,14 @@ public class AccountFragment extends Fragment {
         if (filePath != null) {
             profilePhotoImageView.setImageBitmap(bitmap);
         }
+
+        try {
+            downloadedImage = File.createTempFile("images", "jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        downloadAndSetThumbnails();
 
         return view;
     }
@@ -188,6 +204,58 @@ public class AccountFragment extends Fragment {
                         }
                     });
         }
+    }
+
+    private void downloadAndSetThumbnails () {
+        storageReference.child("Profile Photos/" + user.getUid() + "/profile_photo.jpg").getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                // Use the bytes to display the image
+                Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                DisplayMetrics dm = new DisplayMetrics();
+                getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+                profilePhotoImageView.setMinimumHeight(dm.heightPixels);
+                profilePhotoImageView.setMinimumWidth(dm.widthPixels);
+                profilePhotoImageView.setImageBitmap(bm);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+        //region Older Download method
+        /*StorageReference riversRef = storageReference.child("Preference Default Thumbnails/" + "nightlife_thumb.jpg");
+        riversRef.getFile(downloadedImage).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                // Successfully downloaded data to local file
+                //profilePhotoImageView.setImageURI(taskSnapshot.getStorage().getDownloadUrl());
+                //Picasso.with(getActivity()).load("http://assets1.ignimgs.com/2017/05/02/darksiders-3---s02-1493750188165_1280w.jpg").into(profilePhotoImageView);
+                *//*Glide.with(getActivity())
+                        .using(new FirebaseImageLoader())
+                        .load(storageReference)
+                        .into(profilePhotoImageView);*//*
+                //Toast.makeText(getActivity(), taskSnapshot.getStorage().getName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), taskSnapshot.getStorage().getDownloadUrl().toString(), Toast.LENGTH_SHORT).show();
+                *//*try {
+                    //bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), Uri.parse(downloadedImage.getName()));
+                    //profilePhotoImageView.setImageBitmap(bitmap);
+                    profilePhotoImageView.setImageURI(Uri.parse(downloadedImage.getName()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(), Uri.parse(downloadedImage.getName()).toString(), Toast.LENGTH_SHORT).show();
+                }*//*
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle failed download
+                // ...
+            }
+        });*/
+        //endregion
     }
 
     @Override

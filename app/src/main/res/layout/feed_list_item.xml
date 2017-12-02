@@ -2,8 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sideBarBackground"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView7"
@@ -29,7 +31,7 @@
             android:layout_below="@+id/imageView7"
             android:layout_marginTop="0dp"
             android:text="Event Title"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textColor="@color/cardview_light_background"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,6 +47,7 @@
             android:layout_marginTop="0dp"
             android:layout_row="0"
             android:text="DD/MM/YY"
+            android:textColor="@color/cardview_light_background"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +58,9 @@
             android:layout_column="0"
             android:layout_marginTop="0dp"
             android:layout_row="1"
+            android:paddingBottom="8dp"
             android:text="Here's a very, very awesome description of this event. I have to set the overflow of this text to something that'll work well for this view."
+            android:textColor="@color/testColour11"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
             tools:layout_editor_absoluteX="8dp" />
     </android.support.constraint.ConstraintLayout>

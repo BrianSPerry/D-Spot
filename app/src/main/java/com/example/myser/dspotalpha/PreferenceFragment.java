@@ -98,40 +98,31 @@ public class PreferenceFragment extends Fragment {
         }
 
         @Override
-        public View getView(int i, View view, final ViewGroup viewGroup) {
+        public View getView(final int i, View view, final ViewGroup viewGroup) {
+            CheckBox checkbox;
             if (view == null) {
                 view = getLayoutInflater(bundle).inflate(R.layout.preference_selection_list_item, viewGroup, false);
+                checkbox = (CheckBox)view.findViewById(R.id.checkBox1);
+
+                checkbox.setChecked(false);
                 views.add(view);
                 viewGroups.add((ViewGroup) view);
+                checkBoxes.add(checkbox);
             }
-            else {
 
-            }
-            CheckBox checkbox = (CheckBox)view.findViewById(R.id.checkBox1);
-            checkBoxes.add(checkbox);
-            checkbox.setText(list.get(i));
-
+            checkbox = (CheckBox)view.findViewById(R.id.checkBox1);
             checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if (compoundButton.isChecked()) {
-                        for (int i = 0; i < checkBoxes.size(); i++) {
-                            if (checkBoxes.get(i).getText().equals(compoundButton.getText())){
-                                databaseReferencePrefs.child("User Preferences/" + firebaseUser.getUid() + "/" + "Preference " + String.valueOf(i)).setValue(compoundButton.getText());
-                                //Toast.makeText(getActivity(), "Saving " + String.valueOf(compoundButton.getText()) + " as a preference.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                        databaseReferencePrefs.child("User Preferences/" + firebaseUser.getUid() + "/" + "Preference " + String.valueOf(i)).setValue(compoundButton.getText());
                     }
                     else {
-                        for (int i = 0; i < checkBoxes.size(); i++) {
-                            if (checkBoxes.get(i).getText().equals(compoundButton.getText())){
-                                databaseReferencePrefs.child("User Preferences/" + firebaseUser.getUid() + "/" + "Preference " + String.valueOf(i)).removeValue();
-                                //Toast.makeText(getActivity(), "Removing " + String.valueOf(compoundButton.getText()) + " as a preference.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                        databaseReferencePrefs.child("User Preferences/" + firebaseUser.getUid() + "/" + "Preference " + String.valueOf(i)).removeValue();
                     }
                 }
             });
+            checkbox.setText(list.get(i));
             return view;
         }
     }

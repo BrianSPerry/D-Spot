@@ -1,20 +1,18 @@
 package com.example.myser.dspotalpha;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 
 
 public class FeedsFragment extends Fragment {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+
+    private Bundle bundle;
+    private ListView listView;
 
     public FeedsFragment() {
         // Required empty public constructor
@@ -23,16 +21,37 @@ public class FeedsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feeds, container, false);
-        /*mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+        bundle = savedInstanceState;
+        listView = view.findViewById(R.id.listView);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(mLayoutManager);*/
+        listView.setAdapter(new CustomListAdapter());
         return view;
+    }
+
+    public class CustomListAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return 30;
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            if (view == null) {
+                view = getLayoutInflater(bundle).inflate(R.layout.feed_list_item, viewGroup, false);
+            }
+            return view;
+        }
     }
 
 }

@@ -36,7 +36,7 @@ import org.w3c.dom.Text;
 
 import java.lang.ref.PhantomReference;
 
-public class HomeActivity01 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnWindowSizeChanged {
+public class HomeActivity01 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private HomeFragment homeFragment = new HomeFragment();
     private AccountFragment profileFragment = new AccountFragment();
@@ -191,21 +191,6 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
             Toast.makeText(this, "layout is null!!", Toast.LENGTH_SHORT).show();
         }*/
         //getChildren(layout);
-    }
-
-    private void initializePrefsImageViewArray () {
-        preferenceImages = new LinearLayout[numberOfPreferences];
-
-        preferenceImages[0] = (LinearLayout) findViewById(R.id.prefs1);
-        preferenceImages[1] = (LinearLayout) findViewById(R.id.prefs2);
-        preferenceImages[2] = (LinearLayout) findViewById(R.id.prefs3);
-        preferenceImages[3] = (LinearLayout) findViewById(R.id.prefs4);
-        preferenceImages[4] = (LinearLayout) findViewById(R.id.prefs5);
-        preferenceImages[5] = (LinearLayout) findViewById(R.id.prefs6);
-
-        for (int i = 0; i < preferenceImages.length; i++) {
-            preferenceImages[i].setVisibility(View.GONE);
-        }
     }
 
     public void loadPreference01(View view) {
