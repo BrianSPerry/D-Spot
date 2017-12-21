@@ -11,6 +11,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -59,12 +60,13 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, homeFragment).commit();
+                    fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, homeFragment).addToBackStack(null).commit();
                     return true;
                 case R.id.navigation_dashboard:
-                    fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).commit();
+                    fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).addToBackStack(null).commit();
                     return true;
                 case R.id.navigation_notifications:
+                    Toast.makeText(HomeActivity01.this, "Nothing to show here...", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(HomeActivity01.this, "Double clit!", Toast.LENGTH_SHORT).show();
                     //startActivity(new Intent(HomeActivity01.this, LoginActivity.class));
                     return true;
@@ -96,7 +98,7 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
         firebaseAuthentication = FirebaseAuth.getInstance();
 
         if (fragmentToLoad.equals("HOME")) {
-            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, homeFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, homeFragment).addToBackStack(null).commit();
         }
 
         //preferencesArrayData = new PreferencesArrayData(this);
@@ -115,7 +117,22 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+                //return;
+                //finish();
+                //System.exit(0);
+                //android.os.Process.killProcess(android.os.Process.myPid());
+            }
+            else {
+                super.onBackPressed();
+            }
+            //super.onBackPressed();
+        }
+
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            //this.finish();
+        } else {
+            getFragmentManager().popBackStack();
         }
     }
 
@@ -148,16 +165,17 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, homeFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, homeFragment).addToBackStack(null).commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_profile) {
-            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).commit();
+            //fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).addToBackStack(null).commit();
+            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).addToBackStack(null).commit();
         }  else if (id == R.id.nav_map) {
             startActivity(new Intent(HomeActivity01.this, MapsActivity.class));
         } else if (id == R.id.nav_prefs) {
             //startActivity(new Intent(HomeActivity01.this, PreferencesActivity.class));
-            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, preferenceFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, preferenceFragment).addToBackStack(null).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -225,7 +243,7 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     }
 
     public void loadFeed(View view) {
-        fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, feedsFragmentFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, feedsFragmentFragment).addToBackStack(null).commit();
     }
 
     public void saveInformation (View view) {

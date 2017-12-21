@@ -155,15 +155,16 @@ public class AccountFragment extends Fragment {
                 // whenever data at this location is updated.
                 UserInformation value = dataSnapshot.child((user.getUid())).getValue(UserInformation.class);
 
-                nameEditText.setText(value.name);
-                genderEditText.setText(value.gender);
-                biographyEditText.setText(value.bio);
+                if (value != null) {
+                    nameEditText.setText(value.name);
+                    genderEditText.setText(value.gender);
+                    biographyEditText.setText(value.bio);
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
-                Toast.makeText(getActivity(), "NO DATA CHANGED", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -213,11 +214,13 @@ public class AccountFragment extends Fragment {
                 // Use the bytes to display the image
                 Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 DisplayMetrics dm = new DisplayMetrics();
-                getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+                //getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-                profilePhotoImageView.setMinimumHeight(dm.heightPixels);
-                profilePhotoImageView.setMinimumWidth(dm.widthPixels);
-                profilePhotoImageView.setImageBitmap(bm);
+                if (bm != null) {
+                    profilePhotoImageView.setMinimumHeight(dm.heightPixels);
+                    profilePhotoImageView.setMinimumWidth(dm.widthPixels);
+                    profilePhotoImageView.setImageBitmap(bm);
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
