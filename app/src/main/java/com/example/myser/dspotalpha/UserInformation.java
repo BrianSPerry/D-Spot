@@ -5,16 +5,17 @@ package com.example.myser.dspotalpha;
  */
 
 public class UserInformation {
-    public String name, gender, bio;
+    public String name, gender, bio, country;
 
     public UserInformation () {
 
     }
 
-    public UserInformation (String _name, String _gender, String _bio) {
+    public UserInformation (String _name, String _gender, String _bio, String _country) {
         name = _name;
         gender = _gender;
         bio = _bio;
+        country = _country;
     }
 
 }

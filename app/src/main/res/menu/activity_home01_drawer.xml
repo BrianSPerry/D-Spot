@@ -6,39 +6,47 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
+            android:iconTint="@color/colorAccent"
             android:title="Home" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:icon="@drawable/ic_account_circle_white_24dp"
+            android:iconTint="@color/colorAccent"
             android:title="Account/Profile" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:iconTint="@color/colorAccent"
+            android:title="Games" />
         <item
             android:id="@+id/nav_map"
             android:icon="@android:drawable/ic_dialog_map"
+            android:iconTint="@color/colorAccent"
             android:title="Map" />
-        <item
-            android:id="@+id/nav_prefs"
-            android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="Preferences" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_manage"
+            android:iconTint="@color/colorAccent"
             android:title="Settings" />
     </group>
-
-    <item android:title="Communicate">
+    <item
+        android:title="Events and Places">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Main Chat" />
+                android:id="@+id/visited"
+                android:icon="@android:drawable/presence_invisible"
+                android:iconTint="@color/colorAccent"
+                android:title="Visited Places" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/saved"
+                android:icon="@android:drawable/ic_menu_save"
+                android:iconTint="@color/colorAccent"
+                android:title="Saved Places" />
+            <item
+                android:id="@+id/past"
+                android:icon="@android:drawable/ic_media_previous"
+                android:iconTint="@color/colorAccent"
+                android:title="Past Events" />
         </menu>
     </item>
 

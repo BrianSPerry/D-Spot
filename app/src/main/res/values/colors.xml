@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#363636</color>
-    <color name="colorPrimaryDark">#2e2e2e</color>
-    <color name="colorAccent">#e240ff</color>
-    <color name="backgroundMain">#595959</color>
-    <color name="sideBarBackground">#666666</color>
+    <color name="colorPrimary">#ff0000</color>
+    <color name="colorPrimary1">#363636</color>
+    <color name="colorPrimary2">#c3ff0000</color>
+
+    <color name="colorPrimaryDark">#d90000</color>
+    <color name="colorPrimaryDark1">#2e2e2e</color>
+
+    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent1">#e240ff</color>
+
+    <color name="backgroundMain">#000000</color>
+    <color name="backgroundMain2">#ff6868</color>
+    <color name="backgroundMain1">#595959</color>
+
+    <color name="sideBarBackground">#262626</color>
+    <color name="sideBarBackground1">#666666</color>
+    <color name="sideBarBackground2">#82000000</color>
+
     <color name="prefsBackground">#696969</color>
+    <color name="prefsBackground1">#696969</color>
+
+    <color name="eventBar">#3d3d3d</color>
+    <color name="socialMediaButtons">#55aaf0</color>
+    <color name="socialMediaButtons1">#465993</color>
+
+    <color name="profilePhotoBackground">#2e2e2e</color>
+    <color name="profileStatusBar">#212121</color>
+    <color name="profileButton">#2e2e2e</color>
+
+
 
 
     <color name="testColour1">#ffffff</color>

@@ -14,17 +14,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/side_nav_bar" />
+            app:srcCompat="@drawable/ic_insert_photo_white_24dp" />
 
         <TextView
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginTop="-25dp"
-            android:background="@color/testColour10"
+            android:background="@drawable/profile_image_gradient"
             android:gravity="center"
             android:text="TextView"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textColor="@color/cardview_light_background" />
     </LinearLayout>
 </LinearLayout>

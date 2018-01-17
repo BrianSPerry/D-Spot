@@ -1,0 +1,123 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundMain"
+    tools:context="com.example.myser.dspotalpha.EventInfoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/eventTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:padding="15dp"
+                android:text="Event Title"
+                android:textColor="@color/testColour1"
+                android:textSize="24sp"
+                app:layout_constraintTop_toBottomOf="@+id/roundFrameImage"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="DATE"
+                android:textAlignment="textStart"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="TIME"
+                android:textAlignment="textStart"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/websiteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="WEBSITE"
+                android:textAlignment="textStart"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="DESCRIPTION"
+                android:textAlignment="textStart"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/addressTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="ADDRESS"
+                android:textAlignment="textStart"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/locationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="LOCATION"
+                android:textAlignment="textStart"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="see map" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="buy tickets" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

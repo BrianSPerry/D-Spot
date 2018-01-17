@@ -2,10 +2,10 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="drawerArrowStyle">@style/AppBarStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -16,5 +16,29 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--Settings Activity Theme-->
+    <style name="PreferencesTheme">
+        <!--<item name="android:windowBackground">@color/backgroundMain</item>-->
+        <!--<item name="android:background">#c10000</item>-->
+        <item name="android:background">@color/backgroundMain</item>
+    </style>
+
+
+    <!--Nav Drawer Hamburger Icon Toggle-->
+    <style name="AppBarStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/backgroundMain</item>
+    </style>
+
+    <!--Rating Bar-->
+    <style name="RatingBarStyle" parent="Base.Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressBackgroundTint">@color/testColour11</item>
+        <item name="android:progressTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="ProfileActionBars" parent="Base.Widget.AppCompat.ActionBar">
+        <item name="background">@color/profilePhotoBackground</item>
+        <!--<item name="statusBarColor">@color/profileStatusBar</item>-->
+    </style>
 
 </resources>

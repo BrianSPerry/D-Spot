@@ -1,22 +1,18 @@
 package com.example.myser.dspotalpha;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,11 +31,9 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-
-import static com.example.myser.dspotalpha.R.id.profilePhotoImageView;
+import java.util.HashMap;
 
 public class HomeFragment extends Fragment {
 
@@ -54,6 +48,8 @@ public class HomeFragment extends Fragment {
     private Bundle bundle;
     private GridAdapter gridAdapter;
     public ArrayList<String> strings = new ArrayList<>();
+    private int counter = 0;
+    private Thread thumbnailLoaderThread;
 
     private FirebaseUser firebaseUser;
     private DatabaseReference databaseReferencePrefs;
@@ -93,6 +89,13 @@ public class HomeFragment extends Fragment {
             e.printStackTrace();
         }
 
+        if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Home");
+        }
+        else {
+            Toast.makeText(getActivity(), "Null Action Bar", Toast.LENGTH_SHORT).show();
+        }
+
         firebaseUser = HomeActivity01.firebaseAuthentication.getCurrentUser();
         databaseReferencePrefs = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -105,17 +108,30 @@ public class HomeFragment extends Fragment {
 
     private void getSelectedPreferences () {
         gridAdapter = new GridAdapter();
+        counter = 0;
         databaseReferencePrefs.child("User Preferences/" + firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //gridAdapter = new GridAdapter();
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
                     String value = childSnapshot.getValue().toString();
+                    gridAdapter.keys.add(childSnapshot.getKey());
+                    gridAdapter.values.add(value);
                     gridAdapter.strings.add(value);
+                    loadThumbnails(counter);
+                    counter++;
 
                     if (gridAdapter.strings.size() > 0) {
                         constraintLayoutProgressBar.setVisibility(View.GONE);
                     }
+
+                    /*thumbnailLoaderThread = new Thread() {
+                        @Override
+                        public void run () {
+                            loadThumbnails();
+                        }
+                    };
+
+                    thumbnailLoaderThread.start();*/
                     gridAdapter.notifyDataSetChanged();
                 }
                 gridView.setAdapter(gridAdapter);
@@ -126,6 +142,9 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+
+    private void loadThumbnails (final int index) {
         //even if a preference is not selected,
         //the thumbnail attributed to it
         //gets set to the next selected preference.
@@ -135,8 +154,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                    String value = childSnapshot.getValue().toString();
-                    gridAdapter.thumbnailURLs.add(value);
+                    if (gridAdapter.keys.size() > 0) {
+                        if (childSnapshot.getKey().equals(String.valueOf(gridAdapter.keys.get(index)))) {
+                            String value = childSnapshot.getValue().toString();
+                            gridAdapter.thumbnailURLs.add(value);
+                        }
+                    }
                     gridAdapter.notifyDataSetChanged();
                 }
                 gridView.setAdapter(gridAdapter);
@@ -173,6 +196,10 @@ public class HomeFragment extends Fragment {
 
         public ArrayList<String> strings = new ArrayList<>();
         public ArrayList<String> thumbnailURLs = new ArrayList<>();
+        public HashMap<String, String> preferences = new HashMap<>();
+
+        public ArrayList<String> keys = new ArrayList<>();
+        public ArrayList<String> values = new ArrayList<>();
 
         @Override
         public int getCount() {
@@ -212,6 +239,13 @@ public class HomeFragment extends Fragment {
                     bundle.putString(SELECTED_CATEGORY_STRING, textView.getText().toString());
                     feedsFragmentFragment.setArguments(bundle);
                     fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, feedsFragmentFragment).addToBackStack(null).commit();
+
+                    if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+                        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(textView.getText().toString());
+                    }
+                    else {
+                        Toast.makeText(getActivity(), "Null Action Bar", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 

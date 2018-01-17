@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,40 +26,40 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;*/
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AccountFragment extends Fragment {
 
     private static final int CHOOSE_IMAGE_REQUEST = 234;
 
     public Button saveButton, logOutButton;
     public static String userInformationNode = "User Information/";
+    private boolean isUploaded = false;
 
     private TextView titleTextView;
     private EditText nameEditText;
-    private EditText passwordEditText;
+    private EditText cityCountryTextView;
     private EditText genderEditText;
     private EditText biographyEditText;
     private ImageView profilePhotoImageView;
+
     private Uri filePath;
     private File downloadedImage;
     private Bitmap bitmap;
+    private Handler uploadHandler = new Handler();;
+    private Timer timer;
 
     private DatabaseReference databaseReference;
     private DatabaseReference databaseReferenceLoader;
@@ -74,18 +74,17 @@ public class AccountFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
         titleTextView = (TextView)view.findViewById(R.id.titleTextView);
         nameEditText = (EditText)view.findViewById(R.id.nameEditText);
-        passwordEditText = (EditText)view.findViewById(R.id.passwordEditText);
+        cityCountryTextView = (EditText)view.findViewById(R.id.cityCountryEditText);
         genderEditText = (EditText)view.findViewById(R.id.genderEditText);
         biographyEditText = (EditText)view.findViewById(R.id.biographyEditText);
 
         saveButton = (Button) view.findViewById(R.id.saveInformationButton);
         logOutButton = (Button) view.findViewById(R.id.logoutButton);
-        profilePhotoImageView = (ImageView) view.findViewById(R.id.profilePhotoImageView);
+        profilePhotoImageView = (ImageView) view.findViewById(R.id.roundFrameImage);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReferenceLoader = FirebaseDatabase.getInstance().getReference();
@@ -104,6 +103,13 @@ public class AccountFragment extends Fragment {
             e.printStackTrace();
         }
 
+        if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Account");
+        }
+        else {
+            Toast.makeText(getActivity(), "Null Action Bar", Toast.LENGTH_SHORT).show();
+        }
+
         downloadAndSetThumbnails();
 
         return view;
@@ -112,7 +118,6 @@ public class AccountFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
 //        databaseReferenceLoader.child("User Information").addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(DataSnapshot dataSnapshot) {
@@ -143,22 +148,19 @@ public class AccountFragment extends Fragment {
 //        });
     }
 
-    //I HAVE TO CHECK TO SEE IF THE USER HAS VALID INFO UP ON THEIR PROFILE BEFORE ATTEMPTING TO SET THE INFO TO THE UI.
-    //FAILURE TO DO SO WILL RESULT IN CRASHES EVERY TIME THE USER ATTEMPTS TO OPEN THIS FRAGMENT.
     private void initializeUI () {
-        titleTextView.setText("Welcome, " + user.getEmail() + "!");
-
+        //titleTextView.setText("Welcome, " + user.getEmail() + "!");
         databaseReferenceLoader.child("User Information").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
                 UserInformation value = dataSnapshot.child((user.getUid())).getValue(UserInformation.class);
 
                 if (value != null) {
                     nameEditText.setText(value.name);
                     genderEditText.setText(value.gender);
+                    cityCountryTextView.setText(value.country);
                     biographyEditText.setText(value.bio);
+                    titleTextView.setText("Welcome, " + value.name + "!");
                 }
             }
 
@@ -173,7 +175,8 @@ public class AccountFragment extends Fragment {
         String name = nameEditText.getText().toString();
         String gender = genderEditText.getText().toString();
         String bio = biographyEditText.getText().toString();
-        userInformation = new UserInformation(name, gender, bio);
+        String country = cityCountryTextView.getText().toString();
+        userInformation = new UserInformation(name, gender, bio, country);
 
         databaseReference.child(userInformationNode + user.getUid()).setValue(userInformation);
     }
@@ -184,7 +187,30 @@ public class AccountFragment extends Fragment {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select a profile picture..."), CHOOSE_IMAGE_REQUEST);
-        uploadFile();
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                uploadHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (filePath != null) {
+                            uploadFile();
+                            Log.e("TEST_LOG", "callbacks are taking place");
+                            if (isUploaded) {
+                                //uploadHandler.removeCallbacks(this);
+                                timer.cancel();
+                            }
+                        }
+                        if (isUploaded) {
+                            //uploadHandler.removeCallbacks(this);
+                            timer.cancel();
+                        }
+                    }
+                });
+            }
+        }, 0, 1000);
     }
 
     private void uploadFile () {
@@ -196,6 +222,7 @@ public class AccountFragment extends Fragment {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Toast.makeText(getActivity(), "Photo uploaded...", Toast.LENGTH_SHORT).show();
+                            isUploaded = true;
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

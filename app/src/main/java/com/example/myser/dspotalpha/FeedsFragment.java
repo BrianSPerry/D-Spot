@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,8 +22,18 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-
 public class FeedsFragment extends Fragment {
+
+    public static String SELECTED_EVENT_TITLE = "SELECTED_EVENT_TITLE";
+    public static String SELECTED_EVENT_DATE = "SELECTED_EVENT_DATE";
+    public static String SELECTED_EVENT_DESCRIPTION = "SELECTED_EVENT_DESCRIPTION";
+    public static String SELECTED_EVENT_COVER_URL = "SELECTED_EVENT_COVER_URL";
+    public static String SELECTED_EVENT_TIME = "SELECTED_EVENT_TIME";
+    public static String SELECTED_EVENT_WEBSITE = "SELECTED_EVENT_WEBSITE";
+    public static String SELECTED_EVENT_LOCATION = "SELECTED_EVENT_LOCATION";
+
+    public static String SELECTED_LATITUDE = "SELECTED_LATITUDE";
+    public static String SELECTED_LONGITUDE = "SELECTED_LONGITUDE";
 
     private Bundle bundle;
     private ListView listView;
@@ -47,8 +58,29 @@ public class FeedsFragment extends Fragment {
         Bundle bundle = getArguments();
         selectedCategory = bundle.getString(HomeFragment.SELECTED_CATEGORY_STRING);
 
-        //Toast.makeText(getActivity(), bundle.getString(HomeFragment.SELECTED_CATEGORY_STRING), Toast.LENGTH_SHORT).show();
-        //listView.setAdapter(new CustomListAdapter());
+        //Whereas we can setOnClickListeners inside the BaseAdapter, which we did previously,
+        //We need to get the specific index of the selected item, not the recycled index.
+        //So when views are recycled, they recycle their indexes as well.
+        //the setOnItemClickListener keeps track of all items in the list and thus, returns the correct index when an item is selected.
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(), EventActivity.class);
+
+                intent.putExtra(SELECTED_EVENT_TITLE, listAdapter.eventInformations.get(i).title);
+                intent.putExtra(SELECTED_EVENT_DATE, listAdapter.eventInformations.get(i).date);
+                intent.putExtra(SELECTED_EVENT_DESCRIPTION, listAdapter.eventInformations.get(i).description);
+                intent.putExtra(SELECTED_EVENT_COVER_URL, listAdapter.eventInformations.get(i).cover);
+                intent.putExtra(SELECTED_EVENT_TIME, listAdapter.eventInformations.get(i).time);
+                intent.putExtra(SELECTED_EVENT_WEBSITE, listAdapter.eventInformations.get(i).website);
+                intent.putExtra(SELECTED_EVENT_LOCATION, listAdapter.eventInformations.get(i).location);
+
+                intent.putExtra(SELECTED_LATITUDE, listAdapter.eventInformations.get(i).latitude);
+                intent.putExtra(SELECTED_LONGITUDE, listAdapter.eventInformations.get(i).longitude);
+
+                startActivity(intent);
+            }
+        });
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -98,7 +130,7 @@ public class FeedsFragment extends Fragment {
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
+        public View getView(final int i, View view, ViewGroup viewGroup) {
             ImageView coverImageView;
             TextView titleTextView;
             TextView dateTextView;
@@ -106,12 +138,12 @@ public class FeedsFragment extends Fragment {
 
             if (view == null) {
                 view = getLayoutInflater(bundle).inflate(R.layout.feed_list_item, viewGroup, false);
-                view.setOnClickListener(new View.OnClickListener() {
+                /*view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        startActivity(new Intent(getActivity(), EventActivity.class));
+
                     }
-                });
+                });*/
             }
 
             description = (TextView) view.findViewById(R.id.textView14);

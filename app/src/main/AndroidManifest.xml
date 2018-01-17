@@ -48,7 +48,18 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".AccountSetupActivity" />
-        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".EventActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Title"
+            android:parentActivityName=".HomeActivity01"
+            android:theme="@style/PreferencesTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myser.dspotalpha.HomeActivity01" />
+        </activity>
+        <activity android:name=".ProfileActivity"
+            android:label="Profile"/>
     </application>
 
 </manifest>

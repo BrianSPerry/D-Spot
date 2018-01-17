@@ -1,17 +1,13 @@
 package com.example.myser.dspotalpha;
 
-import android.accounts.Account;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.BoolRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -23,21 +19,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.GridLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import org.w3c.dom.Text;
-
-import java.lang.ref.PhantomReference;
+import com.google.firebase.auth.FirebaseAuth;;
 
 public class HomeActivity01 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Toolbar toolbar;
 
     private HomeFragment homeFragment = new HomeFragment();
     private AccountFragment profileFragment = new AccountFragment();
@@ -53,7 +43,6 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     private int numberOfSelectedPrefs = 0;
     private PreferencesArrayData preferencesArrayData;
     private LinearLayout[] preferenceImages;
-    //private GridLayout gridLayout;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -65,10 +54,8 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
                 case R.id.navigation_dashboard:
                     fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).addToBackStack(null).commit();
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_messages:
                     Toast.makeText(HomeActivity01.this, "Nothing to show here...", Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(HomeActivity01.this, "Double clit!", Toast.LENGTH_SHORT).show();
-                    //startActivity(new Intent(HomeActivity01.this, LoginActivity.class));
                     return true;
             }
             return false;
@@ -79,8 +66,9 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home01);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //ActionBar actionBar = getSupportActionBar();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -152,7 +140,10 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            startActivity(new Intent(HomeActivity01.this, SettingsActivity.class));
+        }
+        if (id == R.id.account) {
+            startActivity(new Intent(this, ProfileActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -170,12 +161,11 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
 
         } else if (id == R.id.nav_profile) {
             //fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).addToBackStack(null).commit();
-            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).addToBackStack(null).commit();
+            startActivity(new Intent(this, ProfileActivity.class));
         }  else if (id == R.id.nav_map) {
             startActivity(new Intent(HomeActivity01.this, MapsActivity.class));
-        } else if (id == R.id.nav_prefs) {
-            //startActivity(new Intent(HomeActivity01.this, PreferencesActivity.class));
-            fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, preferenceFragment).addToBackStack(null).commit();
+        }  else if (id == R.id.nav_settings) {
+            startActivity(new Intent(HomeActivity01.this, SettingsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -20,7 +20,7 @@
                 android:layout_height="200dp">
 
                 <ImageView
-                    android:id="@+id/profilePhotoImageView"
+                    android:id="@+id/roundFrameImage"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
@@ -109,29 +109,6 @@
                 android:textColorHint="@color/hintColour" />
 
             <TextView
-                android:id="@+id/passwordTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="15dp"
-                android:paddingStart="15dp"
-                android:text="PASSWORD:"
-                android:textColor="@color/testColour1"
-                android:textColorHint="@color/hintColour" />
-
-            <EditText
-                android:id="@+id/passwordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:paddingBottom="30dp"
-                android:paddingEnd="15dp"
-                android:paddingStart="15dp"
-                android:textColor="@color/testColour1"
-                android:textColorHint="@color/hintColour" />
-
-            <TextView
                 android:id="@+id/genderTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,6 +123,29 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Gender"
+                android:inputType="textPersonName"
+                android:paddingBottom="30dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <TextView
+                android:id="@+id/cityAndCountryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="CITY AND COUNTRY"
+                android:textColor="@color/testColour1"
+                android:textColorHint="@color/hintColour" />
+
+            <EditText
+                android:id="@+id/cityCountryEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="City and Country"
                 android:inputType="textPersonName"
                 android:paddingBottom="30dp"
                 android:paddingEnd="15dp"
