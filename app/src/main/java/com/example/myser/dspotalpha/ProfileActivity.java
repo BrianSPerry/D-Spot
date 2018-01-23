@@ -92,7 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void editProfile (View view) {
-
+        startActivity(new Intent(this, AccountActivity.class));
     }
 
     private void initializeUI () {

@@ -43,7 +43,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_margin="5dp"
-                    android:background="@android:drawable/ic_menu_edit" />
+                    android:background="@android:drawable/ic_menu_edit"
+                    android:onClick="editProfile" />
 
                 <android.support.v7.widget.CardView
                     android:layout_width="130dp"

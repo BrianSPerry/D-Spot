@@ -1,6 +1,8 @@
 package com.example.myser.dspotalpha;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,10 +22,6 @@ public class EventActivity extends AppCompatActivity {
     private double latitude;
     private double longitude;
 
-    //region TabLayout
-    /*private TabLayout tabLayout;
-    private ViewPager viewPager;*/
-    //endregion
     private TextView title, date, time, website, description, address, location;
     private ImageView imageView;
 
@@ -47,10 +45,6 @@ public class EventActivity extends AppCompatActivity {
             }
         }
 
-        //region Tab Layout
-        /*tabLayout = (TabLayout)findViewById(R.id.tabLayout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);*/
-        //endregion
         imageView = (ImageView) findViewById(R.id.roundFrameImage);
 
         title = (TextView)findViewById(R.id.eventTitleTextView);
@@ -74,7 +68,6 @@ public class EventActivity extends AppCompatActivity {
         latitude = intent.getDoubleExtra(FeedsFragment.SELECTED_LATITUDE, 0);
         longitude = intent.getDoubleExtra(FeedsFragment.SELECTED_LONGITUDE, 0);
 
-        //initializeTabLayout();
         Picasso.with(this).load(intent.getStringExtra(FeedsFragment.SELECTED_EVENT_COVER_URL)).into(imageView);
     }
 
@@ -107,55 +100,8 @@ public class EventActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //region Tab Layout and View Pager
-    /*private void initializeTabLayout() {
-        tabLayout.setupWithViewPager(viewPager);
-        initializeViewPager();
+    public void loadWebsite (View view) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intent.getStringExtra(FeedsFragment.SELECTED_EVENT_WEBSITE))));
     }
 
-    public void initializeViewPager() {
-        EventViewPagerAdapter eventViewPagerAdapter = new EventViewPagerAdapter(getSupportFragmentManager());
-
-        eventViewPagerAdapter.AddFragmentPage(new EventInfoFragment(), "Info");
-        eventViewPagerAdapter.AddFragmentPage(new EventsFragment(), "Events");
-        eventViewPagerAdapter.AddFragmentPage(new EventInfoFragment(), "Reviews");
-
-        viewPager.setAdapter(eventViewPagerAdapter);
-    }
-
-    public class EventViewPagerAdapter extends FragmentPagerAdapter {
-        private List<Fragment> fragments = new ArrayList<>();
-        private List<String> pageTitles = new ArrayList<>();
-
-        public EventViewPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        public void AddFragmentPage (Fragment fragment, String title) {
-            fragments.add(fragment);
-            pageTitles.add(title);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragments.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            //return super.getPageTitle(position);
-            return pageTitles.get(position);
-        }
-
-        @Override
-        public int getItemPosition(Object object) {
-            return super.getItemPosition(object);
-        }
-    }*/
-    //endregion
 }

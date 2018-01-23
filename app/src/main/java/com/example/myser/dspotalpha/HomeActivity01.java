@@ -44,24 +44,6 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     private PreferencesArrayData preferencesArrayData;
     private LinearLayout[] preferenceImages;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, homeFragment).addToBackStack(null).commit();
-                    return true;
-                case R.id.navigation_dashboard:
-                    fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, profileFragment).addToBackStack(null).commit();
-                    return true;
-                case R.id.navigation_messages:
-                    Toast.makeText(HomeActivity01.this, "Nothing to show here...", Toast.LENGTH_SHORT).show();
-                    return true;
-            }
-            return false;
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,9 +59,6 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         thisIntent = getIntent();
         fragmentToLoad = String.valueOf(thisIntent.getStringExtra(LoginActivity.FRAGMENT_TO_LOAD));
@@ -223,21 +202,12 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
         }
     }
 
-    public void logOut (View view) {
-        firebaseAuthentication.signOut();
-        startActivity(new Intent(this, LoginActivity.class));
-    }
-
     public void getPhotoFile (View view) {
         profileFragment.getPhotoFile(view);
     }
 
     public void loadFeed(View view) {
         fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, feedsFragmentFragment).addToBackStack(null).commit();
-    }
-
-    public void saveInformation (View view) {
-        profileFragment.saveInformation(view);
     }
 
 }
