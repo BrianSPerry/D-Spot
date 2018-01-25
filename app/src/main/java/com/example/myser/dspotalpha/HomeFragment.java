@@ -69,7 +69,6 @@ public class HomeFragment extends Fragment {
         if (bundle == null) {
             bundle = new Bundle();
         }
-        //Toast.makeText(getActivity(), (bundle == null) ? "Null!" : "Not Null", Toast.LENGTH_SHORT).show();
         fragmentManager = getActivity().getSupportFragmentManager();
         gridView = view.findViewById(R.id.gridView);
         constraintLayoutProgressBar = view.findViewById(R.id.constraintLayoutProgressBar);

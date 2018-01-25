@@ -31,7 +31,8 @@
             android:name=".HomeActivity01"
             android:label="Home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PreferencesActivity" />
+        <activity android:name=".PreferencesActivity"
+            android:label="Preferences"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -61,7 +62,9 @@
         <activity
             android:name=".ProfileActivity"
             android:label="Profile" />
-        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".FeedsActivity"
+            android:label="Feeds"></activity>
     </application>
 
 </manifest>

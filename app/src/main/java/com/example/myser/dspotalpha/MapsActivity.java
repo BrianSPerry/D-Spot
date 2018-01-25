@@ -38,6 +38,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private long locationUpdateIntervals = 1000;
     private long fastestLocationUpdateIntervals = 1000;
 
+    public static String preferenceName = "com.example.myser.dspotalpha";
     public static String SELECTED_MAP_TYPE = "SELECTED_MAP_TYPE";
     private static final int LOCATION_PERMISSION_CODE = 0;
     private boolean isPermissionGranted = false;
@@ -65,12 +66,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        preferenceName = getPackageName();
         searchView = (SearchView) findViewById(R.id.searchView);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
         mapFragment.getMapAsync(this);
 
-        sharedPreferences = getSharedPreferences(PreferencesActivity.preferenceName, Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(preferenceName, Context.MODE_PRIVATE);
         savedMapType = sharedPreferences.getInt(SELECTED_MAP_TYPE, 0);
         markerPoints = new ArrayList<>();
 
