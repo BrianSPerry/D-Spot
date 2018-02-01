@@ -55,6 +55,15 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        /*if (HomeActivity01.visitCount > 0) {
+            Toast.makeText(this, String.valueOf(HomeActivity01.visitCount), Toast.LENGTH_SHORT).show();
+            finish();
+        }*/
+    }
+
     private void registerUserViaEmail(String email, String password, final String className) {
         if (TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please enter an email address...", Toast.LENGTH_SHORT).show();
@@ -158,6 +167,12 @@ public class LoginActivity extends AppCompatActivity {
     public void goToLogin (View view) {
         signUpLayout.setVisibility(View.GONE);
         loginLayout.setVisibility(View.VISIBLE);
+    }
+
+    private void closeOnBackNavigate (int closeValue) {
+        if (closeValue == 1) {
+            finish();
+        }
     }
 
 }

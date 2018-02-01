@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundMain">
+
+
+    <TextView
+        android:id="@+id/message_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="username"
+        android:textColor="@color/hintColour" />
+
+    <TextView
+        android:id="@+id/message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="@+id/message_user"
+        android:layout_alignParentEnd="true"
+        android:text="DD/MM/YY"
+        android:textColor="@color/hintColour" />
+
+    <TextView
+        android:id="@+id/message_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/message_user"
+        android:layout_marginTop="5dp"
+        android:text="A very awesme message..."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp" />
+</RelativeLayout>

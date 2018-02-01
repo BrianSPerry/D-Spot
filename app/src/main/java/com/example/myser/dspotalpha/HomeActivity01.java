@@ -35,6 +35,8 @@ import java.util.HashMap;
 
 public class HomeActivity01 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static int visitCount = 0;
+
     private Toolbar toolbar;
 
     private HomeFragment homeFragment = new HomeFragment();
@@ -56,6 +58,7 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
     private GridAdapter gridAdapter;
     private int counter = 0;
     private Bundle bundle;
+    private Bundle bundle01;
     public static final String SELECTED_CATEGORY_STRING = "SELECTED_CATEGORY";
 
     @Override
@@ -77,11 +80,25 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
         fragmentToLoad = String.valueOf(thisIntent.getStringExtra(LoginActivity.FRAGMENT_TO_LOAD));
         firebaseAuthentication = FirebaseAuth.getInstance();
 
-        initializeHome(savedInstanceState);
+        bundle01 = savedInstanceState;
+
+        //initializeHome(savedInstanceState);
 
         if (fragmentToLoad.equals("HOME")) {
             //fragmentManager.beginTransaction().replace(R.id.linearLayoutContent, homeFragment).addToBackStack(null).commit();
         }
+        visitCount++;
+    }
+
+    @Override
+    protected void onStart () {
+        super.onStart();
+        initializeHome(bundle01);
+    }
+
+    @Override
+    protected void onDestroy () {
+        super.onDestroy();
     }
 
     @Override
@@ -91,7 +108,7 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
             drawer.closeDrawer(GravityCompat.START);
         } else {
             this.finish();
-            System.exit(0);
+            //System.exit(0);
         }
     }
 
@@ -135,7 +152,10 @@ public class HomeActivity01 extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(this, ProfileActivity.class));
         }  else if (id == R.id.nav_map) {
             startActivity(new Intent(HomeActivity01.this, MapsActivity.class));
-        }  else if (id == R.id.nav_settings) {
+        } else if (id == R.id.messages) {
+            startActivity(new Intent(this, ChatActivity.class));
+        }
+        else if (id == R.id.nav_settings) {
             startActivity(new Intent(HomeActivity01.this, SettingsActivity.class));
         }
 

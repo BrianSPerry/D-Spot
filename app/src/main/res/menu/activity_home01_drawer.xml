@@ -20,6 +20,10 @@
             android:iconTint="@color/colorAccent"
             android:title="Map" />
         <item
+            android:id="@+id/messages"
+            android:iconTint="@color/colorAccent"
+            android:title="Messages"/>
+        <item
             android:id="@+id/nav_settings"
             android:iconTint="@color/colorAccent"
             android:title="Settings" />
