@@ -5,6 +5,7 @@
     <color name="colorPrimary2">#c3ff0000</color>
 
     <color name="colorPrimaryDark">#d90000</color>
+    <color name="colorPrimaryDark2">#d90000</color>
     <color name="colorPrimaryDark1">#2e2e2e</color>
 
     <color name="colorAccent">#ffffff</color>

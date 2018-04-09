@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/searchView"
-        tools:context="com.example.myser.dspotalpha.MapsActivity" />
+        tools:context="com.application.codedarts.dspotalpha.MapsActivity" />
 
     <Button
         android:id="@+id/mapType"

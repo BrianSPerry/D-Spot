@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundMain"
-    tools:context="com.example.myser.dspotalpha.AccountSetupActivity">
+    tools:context="com.application.codedarts.dspotalpha.AccountSetupActivity">
 
     <FrameLayout
         android:id="@+id/frameLayout"

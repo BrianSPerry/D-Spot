@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myser.dspotalpha">
+    package="com.application.codedarts.dspotalpha">
 
     <permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -20,17 +20,17 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"></activity>
+        <activity
+            android:name=".HomeActivity01"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".HomeActivity01"
-            android:label="Home"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PreferencesActivity"
             android:label="Preferences" />
@@ -58,7 +58,7 @@
             android:theme="@style/PreferencesTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myser.dspotalpha.HomeActivity01" />
+                android:value="com.application.codedarts.dspotalpha.HomeActivity01" />
         </activity>
         <activity
             android:name=".ProfileActivity"
@@ -67,8 +67,13 @@
         <activity
             android:name=".FeedsActivity"
             android:label="Feeds" />
-        <activity android:name=".ChatActivity"
-            android:label="Chat"></activity>
+        <activity
+            android:name=".ChatActivity"
+            android:label="Chat" />
+        <activity android:name=".EventsListActivity"
+            android:label="Events List"/>
+        <activity android:name=".PurchasedTicketsActivity"
+            android:label="Purchased Tickets"/>
     </application>
 
 </manifest>

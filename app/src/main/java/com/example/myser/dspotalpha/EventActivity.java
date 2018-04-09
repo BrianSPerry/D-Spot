@@ -18,6 +18,7 @@ public class EventActivity extends AppCompatActivity {
 
     public static String LATITUDE = "LATITUDE";
     public static String LONGITUDE = "LONGITUDE";
+    public static String SELECTED_DESTINATION = "SELECTED_DESTINATION";
 
     private double latitude;
     private double longitude;
@@ -69,6 +70,8 @@ public class EventActivity extends AppCompatActivity {
         longitude = intent.getDoubleExtra(FeedsFragment.SELECTED_LONGITUDE, 0);
 
         Picasso.with(this).load(intent.getStringExtra(FeedsFragment.SELECTED_EVENT_COVER_URL)).into(imageView);
+
+        setTicketButton();
     }
 
     @Override
@@ -102,6 +105,27 @@ public class EventActivity extends AppCompatActivity {
 
     public void loadWebsite (View view) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intent.getStringExtra(FeedsFragment.SELECTED_EVENT_WEBSITE))));
+    }
+
+    private void setTicketButton () {
+        //check to see if there are events
+        //if there are, then set the events button visible with text: "Events"
+        //if just a destination with no events, like Pigeon Point, just put "FREE" for now
+    }
+
+    private void viewEvents () {
+
+    }
+
+    private void buyTicket () {
+
+    }
+
+    public void viewOrBuyTicket (View view) {
+        Intent eventIntent = new Intent(this, EventsListActivity.class);
+
+        eventIntent.putExtra(SELECTED_DESTINATION, "/" + String.valueOf(title.getText()) + "/Events");
+        startActivity(eventIntent);
     }
 
 }

@@ -22,7 +22,7 @@
         <item
             android:id="@+id/messages"
             android:iconTint="@color/colorAccent"
-            android:title="Messages"/>
+            android:title="Chat"/>
         <item
             android:id="@+id/nav_settings"
             android:iconTint="@color/colorAccent"

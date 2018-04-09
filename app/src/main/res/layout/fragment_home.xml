@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundMain"
-    tools:context="com.example.myser.dspotalpha.HomeFragment">
+    tools:context="com.application.codedarts.dspotalpha.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,7 @@ public class FeedsActivity extends AppCompatActivity {
     public static String SELECTED_LONGITUDE = "SELECTED_LONGITUDE";
 
     private ListView listView;
+    private TextView categoryTextView;
     private String selectedCategory;
     private Intent intent;
     private CustomListAdapter listAdapter;
@@ -66,7 +68,10 @@ public class FeedsActivity extends AppCompatActivity {
         intent = getIntent();
 
         listView = (ListView) findViewById(R.id.listView);
+        categoryTextView = (TextView) findViewById(R.id.categoryTextView);
         selectedCategory = intent.getStringExtra(HomeActivity01.SELECTED_CATEGORY_STRING);
+
+        categoryTextView.setText(selectedCategory);
 
         //Whereas we can setOnClickListeners inside the BaseAdapter, which we did previously,
         //We need to get the specific index of the selected item, not the recycled index.
@@ -166,13 +171,20 @@ public class FeedsActivity extends AppCompatActivity {
             TextView description;
 
             if (view == null) {
-                view = getLayoutInflater().inflate(R.layout.feed_list_item, viewGroup, false);
+                if (i % 2 == 0) {
+                    view = getLayoutInflater().inflate(R.layout.feed_list_item, viewGroup, false);
+                }
+                else {
+                    view = getLayoutInflater().inflate(R.layout.feed_list_item_inverted, viewGroup, false);
+                }
+                //region old onclick method
                 /*view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                     }
                 });*/
+                //endregion
             }
 
             description = (TextView) view.findViewById(R.id.textView14);

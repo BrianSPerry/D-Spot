@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundMain"
-    tools:context="com.example.myser.dspotalpha.ProfileActivity">
+    tools:context="com.application.codedarts.dspotalpha.ProfileActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -43,7 +43,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_margin="5dp"
-                    android:background="@android:drawable/ic_menu_edit"
+                    android:background="@drawable/edit"
                     android:onClick="editProfile" />
 
                 <android.support.v7.widget.CardView
@@ -71,11 +71,12 @@
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/cityCountryTextView"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/gray_cat"
                     android:maxLines="3"
                     android:text="FName LName"
                     android:textAlignment="center"
                     android:textColor="@color/testColour1"
-                    android:textSize="24sp"
+                    android:textSize="30sp"
                     app:layout_constraintTop_toBottomOf="@+id/roundFrameImage"
                     tools:layout_editor_absoluteX="8dp" />
 
@@ -85,12 +86,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/gray_cat"
                     android:maxLines="3"
                     android:paddingBottom="5dp"
                     android:text="City, Country"
                     android:textAlignment="center"
                     android:textColor="@color/testColour1"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     app:layout_constraintTop_toBottomOf="@+id/roundFrameImage"
                     tools:layout_editor_absoluteX="8dp" />
 
@@ -115,11 +117,12 @@
                         android:id="@+id/button11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
                         android:layout_marginLeft="8dp"
                         android:background="@color/prefsBackground1"
+                        android:fontFamily="@font/gray_cat"
                         android:text="$Topup"
                         android:textColor="@color/cardview_light_background"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:layout_editor_absoluteY="0dp" />
@@ -128,10 +131,12 @@
                         android:id="@+id/button8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="0dp"
                         android:background="@color/prefsBackground1"
+                        android:fontFamily="@font/gray_cat"
+                        android:onClick="seeBoughtTickets"
                         android:text="$Tickets"
                         android:textColor="@color/cardview_light_background"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:layout_constraintRight_toRightOf="parent"
                         tools:layout_editor_absoluteY="0dp" />
@@ -157,8 +162,11 @@
                     android:layout_rowWeight="1"
                     android:layout_weight="1"
                     android:background="@color/profileButton"
+                    android:fontFamily="@font/gray_cat"
+                    android:onClick="seeFollowing"
                     android:text="Following"
-                    android:textColor="@color/cardview_light_background" />
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="18sp" />
 
                 <Button
                     android:id="@+id/imageView4"
@@ -170,8 +178,11 @@
                     android:layout_rowWeight="1"
                     android:layout_weight="1"
                     android:background="@color/profileButton"
+                    android:fontFamily="@font/gray_cat"
+                    android:onClick="seeUpcomingEvents"
                     android:text="Upcoming"
-                    android:textColor="@color/cardview_light_background" />
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="18sp" />
 
                 <Button
                     android:id="@+id/imageView9"
@@ -183,8 +194,11 @@
                     android:layout_rowWeight="1"
                     android:layout_weight="1"
                     android:background="@color/profileButton"
+                    android:fontFamily="@font/gray_cat"
+                    android:onClick="seeBoughtTickets"
                     android:text="Tickets"
-                    android:textColor="@color/cardview_light_background" />
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="18sp" />
 
                 <Button
                     android:id="@+id/imageView12"
@@ -197,8 +211,11 @@
                     android:layout_rowWeight="1"
                     android:layout_weight="1"
                     android:background="@color/profileButton"
+                    android:fontFamily="@font/gray_cat"
+                    android:onClick="seePastEvents"
                     android:text="History"
-                    android:textColor="@color/cardview_light_background" />
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="18sp" />
 
             </GridLayout>
         </LinearLayout>

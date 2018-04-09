@@ -22,9 +22,12 @@
             android:layout_height="25dp"
             android:layout_marginTop="-25dp"
             android:background="@drawable/profile_image_gradient"
+            android:fontFamily="@font/gray_cat"
             android:gravity="center"
+            android:paddingStart="5dp"
             android:text="TextView"
             android:textAlignment="viewStart"
-            android:textColor="@color/cardview_light_background" />
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>

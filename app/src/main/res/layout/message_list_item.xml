@@ -13,8 +13,10 @@
 
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:fontFamily="@font/gray_cat"
         android:text="username"
-        android:textColor="@color/hintColour" />
+        android:textColor="@color/hintColour"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/message_time"
@@ -23,18 +25,20 @@
 
         android:layout_alignParentBottom="@+id/message_user"
         android:layout_alignParentEnd="true"
+        android:fontFamily="@font/gray_cat"
         android:text="DD/MM/YY"
-        android:textColor="@color/hintColour" />
+        android:textColor="@color/hintColour"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/message_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/message_user"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/message_user"
+        android:fontFamily="@font/gray_cat"
         android:text="A very awesme message..."
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/cardview_light_background"
-        android:textSize="18sp" />
+        android:textSize="24sp" />
 </RelativeLayout>

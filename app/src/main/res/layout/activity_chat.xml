@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundMain"
-    tools:context="com.example.myser.dspotalpha.ChatActivity"
+    tools:context="com.application.codedarts.dspotalpha.ChatActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
@@ -19,6 +19,8 @@
         android:layout_marginTop="0dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="16dp"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -51,7 +53,7 @@
 
         <Button
             android:id="@+id/button13"
-            android:layout_width="40dp"
+            android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"

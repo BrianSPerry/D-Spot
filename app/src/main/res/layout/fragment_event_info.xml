@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgroundMain"
-    tools:context="com.example.myser.dspotalpha.EventInfoFragment">
+    tools:context="com.application.codedarts.dspotalpha.EventInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

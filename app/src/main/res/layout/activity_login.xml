@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundMain"
-    tools:context="com.example.myser.dspotalpha.LoginActivity">
+    tools:context="com.application.codedarts.dspotalpha.LoginActivity">
 
     <LinearLayout
         android:id="@+id/loginLayout"
@@ -39,6 +39,7 @@
             android:id="@+id/emailEditTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/backgroundMain1"
             android:ems="10"
             android:hint="Enter Email"
             android:inputType="textEmailAddress"
@@ -50,6 +51,7 @@
             android:id="@+id/passwordEditTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/backgroundMain1"
             android:ems="10"
             android:hint="Enter Password"
             android:inputType="textPassword"
@@ -78,6 +80,7 @@
                 android:padding="15dp"
                 android:text="Remember Me"
                 android:textColor="@color/testColour1"
+                android:visibility="gone"
                 app:buttonTint="@color/testColour1" />
 
             <TextView
@@ -87,7 +90,7 @@
                 android:layout_weight="1"
                 android:padding="15dp"
                 android:text="Forgot Password?"
-                android:textAlignment="viewEnd"
+                android:textAlignment="viewStart"
                 android:textColor="@color/testColour1" />
         </LinearLayout>
 
@@ -175,7 +178,7 @@
                 app:buttonTint="@color/testColour1" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/textViewA"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
